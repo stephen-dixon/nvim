@@ -32,3 +32,12 @@ vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 vim.keymap.set("n", "<leader><leader>", function()
     vim.cmd("so")
 end)
+
+-- display LSP diagnostic in floating window (when text runs beyond line-end, or multiple exist for single-line)
+vim.api.nvim_set_keymap(
+  "n", "<Leader>d", ":lua vim.diagnostic.open_float()<CR>", 
+  { noremap = true, silent = true }
+)
+
+-- display quickfixes for lsp [fix available] diagnostics
+ vim.keymap.set('n', '<leader>qf', ":lua vim.lsp.buf.code_action()<CR>", { noremap = true, silent = true })
